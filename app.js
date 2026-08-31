@@ -68,7 +68,7 @@ document.getElementById("ns").addEventListener("click",function(){switchView("st
 document.getElementById("nm").addEventListener("click",function(){switchView("movements")});
 document.getElementById("fab").addEventListener("click",function(){openItemModal()});
 document.getElementById("searchInput").addEventListener("input",renderContent);
-document.getElementById("fileInput").addEventListener("change",function(e){importExcel(e.target.files[0])});
+var fi=document.getElementById("fileInput");if(fi)fi.addEventListener("change",function(e){importExcel(e.target.files[0])});("change",function(e){importExcel(e.target.files[0])});
 document.addEventListener("click",function(e){if(!e.target.closest(".ub")&&!e.target.closest(".udd"))document.getElementById("userDD").classList.remove("show");handleAction(e)});
 db.ref("estoque").on("value",function(s){var d=s.val();if(d&&d.categories&&d.items){if(Date.now()-lastSave>1000){state=d;localStorage.setItem(SK,JSON.stringify(state));render()}}else{db.ref("estoque").set(state)}});
 });
